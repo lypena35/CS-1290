@@ -1,0 +1,35 @@
+Chapter 1: Problem 1.6-String Compression: Implement a method to perform basic string compression using the counts of repeated characters. For example, the string aabcccccaa would become a2b1c5a3. If the “compressed” string would not become smaller than the original string, your method should return the original string. You can assume the string has only uppercase and lowercase letters (a-z). 
+
+I: We are basically counting the characters and if there are duplicate letters together we basically condense them to just one instance of the letter and the number of how many there are then the next letter and how many there are etc. If there is one instance of the letter we still add that 1 to the character so it doesn’t necessarily have to be duplicated. 
+D: We go through the string and count all the letters that are next to each other and once we find a new character we do the same thing then we add in those counts and compress the string.
+E,A: Step 1: Works some small instances by hand:
+            We could use “aaabc” and it would be “a3b1c1” would be the compressed version of the original string. Or even smaller “ab” would be “a1b1”/ 
+      Step 2: write down what you did:
+             Well we need to loop through the string and count it. Once we come across the new character then we take out the duplicated and add the count of how many they are then reset the counter and continue till there is no more string to traverse. Then we return the final string. That might not be efficient enough, again a hash map would be better to use but again we need to use strings or arrays. 
+   Step 3: Fine patterns
+               The only pattern I can see is similar to the third problem in the sense that we are taking things out and adding them. For sure a for loop to traverse and a counter to keep track of the number of letters and then an if statement to along with what we need to do to compress and add in the count and then reset them. 
+
+   Step 4: Check by hand
+ 
+         will try to attach photo  
+
+   Step 5: translate it to code
+          Public static String compressString(String str){
+                 String compress=” ”;
+                 int count=0;
+                 for(int i=0;i<str.length();i++){
+                      count++;
+                       if(the current character is not equal to the one next to it ){
+                             then we delete the extra characters and add in the count
+                           count=0;
+                         }
+                  }
+                Return compress;
+           }
+
+Step 6: run test cases:  
+        In this way once we add in the necessary code we should get the correct result that we need. Like the example given. 
+
+Step 7: Debug failed test case:
+       We will definitely need to debug and see the edge cases and what might cause any issues. 
+L: This problem is easy to understand but tough to just straight out code I would need more time to work on it to figure it out. I really like this problem though it’s really interesting. 
