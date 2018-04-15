@@ -1,0 +1,79 @@
+Chapter 1: Problem 1.5-One Away: There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. Given two strings, write a function to check if they are one edit (or zero edits) away.
+EXAMPLE:
+Pale, ple ->true
+Pales, pale -> true
+Pale, bale-> true
+Pale, bae -> false
+
+I: We have two strings and we want to check if the first string takes one edit to get to the second string. We can “edit” these strings by either inserting, removing, or replacing a character. If it is more than one edits it will return false and if it is one edit it is true. 
+D: We need three separate methods one check if we insert a character one to check if we remove a character and one to check if we edited the string once. We can easily create the replace method and the insert method will be a little harder to create and our main check method will take the other methods and checks if it is one away.
+E,A: Step 1: Works some small instances by hand:
+           The examples from the problem are great small instances to work with. Other examples we could try could be gray and one edit could be gra or grey, but more than one edit would be gred or gr. Even grey and you have g or nothing because everything was removed and of course that would return false. 
+
+      Step 2: write down what you did:
+           The replace method we just pass two strings and we set a boolean variable to false and we go through the string character by character and if they are not the same then we mark that there is a different and return false else we set our boolean variable to true and return true. The insert method we have to think back to dynamic programming and how we get the minimum edit distance so with that in mind we can think about checking if a character was inserted, for sure we will pass two strings and we will need two variables to keep track of the strings.  The third array we could check the lengths then check if we inserted or replaced or removed. 
+
+   Step 3: Fine patterns
+           The replace method would be very similar to the has been seen before type method therefore, it is very easy to check these strings because we have done similar problems to this one. We think about minimum edit distance chart to think about how we would check for removal and insertion and bringing them together in the final third array. 
+   Step 4: Check by hand
+ 
+         
+
+   Step 5: translate it to code
+  public static boolean checkReplace(String str1,String str2){
+        boolean fDiff=false;
+        for(int i=0;i<str1.length ();i++){
+            if(str1.charAt (i)!=str2.charAt (i)){
+                if(fDiff){
+                    return false;
+                }
+                fDiff=true;
+            }
+        }
+        return true;
+    }
+Public static boolean checkInsert(String str1,String str2){
+    int p1=0;
+    int p2=0;
+    while(p2<str2.length () && p1<str1.length ()){
+         if(str1.charAt (p1)!=str2.charAt (p2)){
+              if(p1!=p2){
+                  return false;
+                }
+                p2++;
+          }else{
+              p1++;
+              p2++;
+            }
+      }
+Return true;
+}
+
+Public static boolean checkOneEdit(String str1,String str2){
+if(str1.length ()==str2.length ()){
+            return checkReplace (str1, str2);
+        }else if(str1.length ()+1== str2.length ( )){//we add +1 because we inserted a character
+            return checkInsert (str1, str2);
+        }else if(str1.length ()-1==str2.length ()){//we subtract -1 because we removed a character
+            return checkInsert (str2,str1);
+        }
+        return false;
+    }
+
+Step 6: run test cases: 
+We try the same examples given str1 and str2 we should get true and false for a and b. We did get that output. 
+String str1="pale";
+    String str2="ple";
+    String a="pale";
+    String b="bae";
+        System.out.println (oneEditAway (str1,str2) );
+        System.out.println (oneEditAway (a,b) );
+
+Output:
+true
+false
+
+Step 7: Debug failed test case:
+    I had to play around with the increments and think about when to increment that took some time to figure out. Other than that, I didn’t have to much trouble because drawing out the minimum edit distance really helps a lot to write the code. 
+L: This solution wasn’t too bad because I practiced doing the tracing so much that I could see what needed to be done. It took a bit of tweaking, but I was happy I figured it out. I really like this question because of the ease of visibility to translate from drawing to code.
+
