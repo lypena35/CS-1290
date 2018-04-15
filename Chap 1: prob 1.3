@@ -1,0 +1,45 @@
+Chapter 1: Problem 1.3- URLify: Write a method to replace all spaces in a string with %20. You may assume that the string has sufficient space at the end to hold the additional characters, and that you are given the “true” length of the string. (Note: if implementing in Java, please use a character array so that you can perform this operation in place.)
+EXAMPLE:
+Input:   “Mr John Smith    “, 13
+Output:  “Mr%20John%20Smith”
+
+I: Basically, we need to go check the string and look for spaces for example: “  “ and once we find the space we will replace that space with %20. Doing so will leave a string that may previously had spaces and now those spaces are occupied by %20.
+D: So, since we have to use a character array we for sure have to traverse it, looking for a space and if we do find it then we need to add each new character the %, the 2, and the 0. For sure we have to keep an eye on the size of the array because if we exceed it we will need to create a new array and copy over the information from the old array into the new one leaving space of the new characters. Maybe we could traverse it and keep a count of how many spaces there are, so we can use that variable to help us. For sure we will need an index variable to allow us to manipulate the index in the character array. 
+E,A: Step 1: Works some small instances by hand:
+      Examples of this working: input “a   bc   d”,10 and should output “a%20bc%20d. One input that would not be modified would be like “abcd”,4 and would output “abcd”. Or if we don’t put a correct length we would get an array out of bounds. 
+
+      Step 2: write down what you did:
+            I had to make sure to count all the spaces in the example and think about how the size will affect the array. How would you accommodate the fact that the array may need to be enlarged? Should we initially create a larger array and use that, but we can’t always anticipate we know how to accommodate that size, or that the user puts in the right length. I decided to use simple strings like my examples in step 1 and I could easily see what needs to happen and what the character string needs to look like when we pass it into the method, as well as, the length of the array.
+
+   Step 3: Fine patterns
+       I found that for sure we have to leave three spaces for the three characters that are going to be added so we need a variable to keep track of the spaces so that when we create a new array we know where to create those three empty spaces that will house the %20. With this in mind I wonder how traversing the array will affect getting the necessary responses. How would traversing backward be more effective due to the fact that we have to add the %20.
+
+   Step 4: Check by hand
+ 
+         photo attached
+
+   Step 5: translate it to code
+public static void replaceSpaces(char[] str, int trueLength) {
+        int spaceCounter = 0;
+                int index = 0;
+                int i = 0;
+        for (i = 0; i < trueLength; i++) {
+            if (str[i] == ' ') {
+                spaceCounter++;
+            }
+        }
+           If(spaceCounter==0) System.out.println(“There are no spaces in this string”);//we could return the string here 
+	//a if statement to deal with if the array is too small make a new one and copy it over
+       Index=something to look for the spaces this is where the space counter will be used
+      for (i = trueLength - 1; i >= 0; i--) {
+             if(str[i]== “ “){
+               add the ‘0’ and the ‘2’ and the ‘%’
+             }
+        }
+}
+Step 6: run test cases: 
+      I ran into some issues, so I didn’t get to completely solve this problem.
+       Step 7: Debug failed test case:
+         I feel that we need to also check if the array is too long maybe we should decrease the size of the array as an else or we should make an array to see if we exceed the size to make a bigger array in case the array is too small. 
+
+L: I don’t like these types of problems because arrays are kind of a pain when it comes to adding stuff and not having enough space, so I get caught between making a bigger array and risk it being too big. So, I would have rather used array lists since we don’t have to worry at the size and we can go straight to the spaces and add what we need to. Or even a hash map would be much more easy and effective to execute especially when it comes to running times as well. 
