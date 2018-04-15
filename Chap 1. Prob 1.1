@@ -1,0 +1,51 @@
+1.1 Problem: Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures?
+
+I: This problem is asking us to check if a string’s characters or contents are all unique meaning there are no duplicates or repeating characters. Therefore, we basically need to check for duplicates and if there are duplicates we return false if there isn’t we return true because all the strings characters are unique. We can think of many different data structures to solve this problem, but the problem clearly states we cannot use additional data structures. 
+
+D: Since we cannot use additional data structures we must use a boolean array allowing us to check the characters of the string and mark the index where that character is in the string. Otherwise, we would return false if we see that character again. If we could use an additional data structure, we could consider using a hash set or hash map to solve this. 
+
+E,A: Step 1: Works some small instances by hand:
+     Say we have a string “aabc” this string would obviously fail because a is duplicates so not all characters are unique. If we had a string “abc” this would return true because all the characters are unique. Or if the strings characters are duplicated but separated is another possible input that should also return false, for example: “abca” or” abac” or “abcb” etc.
+     Step 2: write down what you did:
+      I have solved similar problems to this one in labs. Since this is the case I thought about those problems and how I solved them. I then thought about how this problem was different from those I have solved and how it was similar. The first thing that came to mind was checking using a boolean array and marking true if we have visited that character. Then I thought about what instances that would cause the algorithm to return true or false which I explained in step 1. These are great examples to use in the testing phase. 
+   Step 3: Fine patterns
+         Since I had worked on problems similar to these I was thinking about them and how I could change them to fit this problem. So, the patterns in how those would apply to this one. We definitely need the boolean array, and we need to convert the string into a character assuming we can use ASCII or Unicode to do so. Assuming this we can set our boolean array to be 128 characters because that is how many characters in the ASCII alphabet. Of course, we need a for loop to traverse the string and if that boolean array at that current index is true then we return false else we return true.
+   Step 4: Check by hand
+      Pictures can not be added here. Will try to attach them. 
+      
+
+   Step 5: translate it to code
+    public static boolean isUnique(String str) {
+        boolean[] checkString = new boolean[128];
+        for (int i = 0; i < str.length ( ); i++) {
+            int index = str.charAt (i);
+            if (checkString[index]) {
+                return false;
+            } else {
+                checkString[index] = true;
+            }
+        }
+        return true;
+    }
+
+Step 6: run test cases: 
+      This is my main where I tested the string examples I listed above. I should have gotten false true and false. I did indeed get that output.
+public static void main(String[] args) {
+        String a="aabc";
+        String b="abc";
+        String c="abca";
+
+       System.out.println( isUnique (a));
+       System.out.println(isUnique (b));
+        System.out.println (isUnique (c));
+    }
+Output: 
+false
+true
+false
+
+Step 7: Debug failed test case:
+I tried the empty string. I received true which is correct. 
+String d=" ";
+
+L: It was interesting to think about how this problem has come up often during my classes and in different variable types. I wouldn’t have known about how many characters were in the ASCII alphabet if we haven’t talked about it in class so that saved me the trouble of looking it up. 
