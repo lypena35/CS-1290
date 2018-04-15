@@ -1,0 +1,51 @@
+Chapter 1: Problem 1.2- Check Permutation: Given two strings, write a method to decide if one is a permutation of the other.
+
+I: Permutations are basically a way of arranging different variations of a set of things where order matters. So, we are essentially checking to see if two stings that we pass are an arrangement of the other, in the sense that it follows the rules of the set. So, say you have a set {1,2,3} we could have {1,3,2} or {2,1,3} or {3,2,1} are a few examples of permutations. 
+D: Right away I think about checking if the strings are the same length, and if they are we put the strings into an array or array list and sorting it and then checking if the words match up or do something similar to problem one creating an array of size 128 and see if we have seen it before and if we end with the variable we use to check the strings is 0 for both we know we have seen it before and they are permutations. 
+E,A: Step 1: Works some small instances by hand:
+            For example, we pass two strings the first one being “god “and the other “dog” that would be a permutation of the other. Another example even simpler would be “abc” and “bca” would be another example of a permutation. Ones that would not be a permutation would be like “cat” and “bat” or “abc” “ab” or “abc” and “dca”. 
+          Step 2: write down what you did:
+             So we need to make a character array and sort the array and return that sorted array in a separate method. Then the main method we compare them and check if they are equal or be compare them and if they are we return true if not we return false.
+
+   Step 3: Fine patterns:
+     This problem reminds me of the anagram problem we worked on in class. I think that’s why I could think about how to work it out so quickly since we worked on a similar problem before. If we could use any data structure it would be cool to use a hash map to solve this. Since it’s a chapter on arrays and strings we have to solve it using an array. We definitely need to use an if statement to check the lengths and if they are not the correct length we return false and then we can put them into an arrays and sort them and see if the equal each other. To make it more generic I think it’s better if we split it into two methods so that we just call the method and it can check each string without doubling the lines of code in one method. 
+
+   Step 4: Check by hand
+ 
+         photos attached.
+
+   Step 5: translate it to code
+public static String sortForPermutation(String str) {
+        char[] permCharArray = str.toCharArray ( );
+        Arrays.sort (permCharArray);
+        String sortedStr = new String (permCharArray);
+        return sortedStr;
+    }
+
+    public static boolean permutationChecker(String str1, String str2) {
+        if (str1.length ( ) != str2.length ( )) {
+            return false;
+        }
+        return sortForPermutation (str1).equals (sortForPermutation (str2));
+    }
+
+Step 6: run test cases: 
+I first ran str1 and str2 which should return true which it does. Then I tried a and b which should return false and it does. Then I tried c and d which should return true and it does so we are good. 
+        String str1="dog";
+        String str2="god";
+        String a="ab";
+        String b="abc";
+        String c="abc";
+        String d="bca";
+        System.out.println (permutationChecker (str1,str2) );
+        System.out.println (permutationChecker (a,b) );
+        System.out.println (permutationChecker (c,d) );
+
+Output: 
+true
+false
+true
+
+Step 7: Debug failed test case:
+    Maybe we need to also consider upper case letters and strings with spaces as well. We should ask about that and once we know what to assume or not we can modify the code as necessary. 
+L: This one was very easy because of the fact that we have worked on similar problems to this one. It is very easy to come up with the code for it. I think the factors in the debug step should definitely be taken into account because that can definitely affect the code and its outcome. We could also try the other solution I mentioned above and that could have a better running time. 
