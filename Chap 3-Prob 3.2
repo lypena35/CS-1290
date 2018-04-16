@@ -1,7 +1,7 @@
 Chapter 3: Problem 3.2 Stack Min: How would you design a stack which, in addition to push and pop has a function min which returns the minimum element? Push, pop, and min should all operate in 0(1) time.
 
 I: We need to create a method that returns the minimum element and should be 0(1) like push and pop. 
-D: We need a variable to keep track of the minimum element and if we find a smaller value then that element becomes the minimum. We can do so with math.min but we need to pass two integers for it so the best answer is Integer.MAX_VALUE. We can add it in the push method and push the value onto the stack and keep track of the minimum. Then we can have a method to check for the minimum using peek. 
+D: We need a variable to keep track of the minimum element and if we find a smaller value then that element becomes the minimum. We can do so with math.min but we need to pass two integers for it, so the best answer is Integer.MAX_VALUE. We can add it in the push method and push the value onto the stack and keep track of the minimum. Then we can have a method to check for the minimum using peek. 
 E,A: Step 1: Works some small instances by hand:
       We could push (5) and that would be the smallest element and push (6) and 5 would still be smaller than push (3) and 3 would be the smallest. Than we pop, and we get 3 and the new minimum is 5 and we pop 6 and 5 is still minimum. 
 
@@ -17,7 +17,7 @@ E,A: Step 1: Works some small instances by hand:
    Step 5: translate it to code
  Class stack{
 Public int min;
-Public Node first;
+Public iNode first;
 Public int size;
 Public int item;
 
@@ -41,5 +41,5 @@ Step 6: run test cases:
     This is kind of a hard thing to manage being stacks can be anything in the sense that what is in the class can differ, so I used pseudocode when need be. 
 But essentially what should happen would be pushing and popping integers in the stack and out of the stack and we would get the minimum number that is accurate because we keep track of it all the time. 
 Step 7: Debug failed test case: 
-     This is a little hard again because we don’t exactly know if we have a preset stack object or we need to create our own etc. So, I am going off of pseudocode for that reason.
+     This is a little hard again because we don’t exactly know if we have a preset stack object or we need to create our own so that is something I would ask. 
 L: I don’t get to work with stacks much, but I like working with them. I like how we can create our own specific stack for what we need it for, this question is a great example of this. 
