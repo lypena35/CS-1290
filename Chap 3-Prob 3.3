@@ -1,0 +1,42 @@
+Chapter 3: Problem 3.3 Stack of Plates: Imagine a (literal) stack of plates. If the stack gets too high, it might topple. Therefore, in real life, we would likely start a new stack when the previous stack exceeds some threshold. Implement a data structure SetOfStacks that mimics this. SetOfStacks should be composed of several stacks and should create a new stack once the previous one exceeds capacity. SetOfStacks.push() and setOfStacks.pop() should behave identically to a single stack (that is, pop() should return the same values as it would if there were just a single stack). 
+FOLLOW UP
+Implement a function popAt(int index) which performs a pop operation on a specific sub-stack.
+
+I: We are basically using a stack and if it is two high we need to create a new stack. Just like stacks of plates in real life. The push and pop should have the same values as it would if there was just one stack. 
+D: We need to create a class SetOfStacks and we could use an array list or maybe a hash table? Stacks have always reminded me more of array lists, so I like that idea better. Then the push method would have to leave off where the last stack started and check if it is full if it is we don’t add anything if it isn’t we can push onto the stack. Else we need to create a new stack and start pushing and adding on to the new stack. The pop method we again need to check the last stack if it is not null we can possibly add more things into the stack. 
+
+E,A: Step 1: Works some small instances by hand:
+        We can have a small stack like {1,4,5,6} and say its full then we need to create another one and push more things onto it, {} now we have two stacks one empty to continue adding to the stack until we need to pop.  
+
+      Step 2: write down what you did:
+           We need to modify the push and pop to create a new stack if it is necessary to do so. Then we push and pop as necessary as well. I explain it more in the D section of this section. 
+
+   Step 3: Find patterns
+         We again modify the stack to fit our needs and we use it accordingly and we modify pop and push to create a new stack if we need to. 
+
+   Step 4: Check by hand
+         See the attached image compressed file. 
+
+   Step 5: translate it to code
+    Public push(int item){
+  Stack get the previous stack
+If(the prevStack is not null and the prevStack is not full)
+prevStack.push(item);
+else{
+create new stack(new size)
+newStack.push item;
+stack array add to stack;
+}
+}
+Public int pop(){
+Get the prevStack;
+If the prevStack is not null
+We pop the last element and then we subtract it from the size of the stack;
+Return that element we popped.
+}
+
+Step 6: run test cases: 
+   This should work. For example, {1,2,5,6} its full so we create a new stack {} add 7 and 8 {7,8} then we pop 8 so we have a stack with just 7 {7}.
+Step 7: Debug failed test case:
+If the stack is null we would have a problem, so we would need to address that.
+L: Again, stacks are awesome because we can customize them to whatever we need them to do. I think I will do all these in pseudocode because the class stack changes every time, but the pseudocode gets the point across. I like this idea of having this safe ability so that why we lessen the chance of having issues with the stack but also if it gets to big that can be a problem to so it’s not perfect, we should probably have a cut off point. 
