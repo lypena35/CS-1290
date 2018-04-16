@@ -3,7 +3,7 @@ FOLLOW UP
 Implement a function popAt(int index) which performs a pop operation on a specific sub-stack.
 
 I: We are basically using a stack and if it is two high we need to create a new stack. Just like stacks of plates in real life. The push and pop should have the same values as it would if there was just one stack. 
-D: We need to create a class SetOfStacks and we could use an array list or maybe a hash table? Stacks have always reminded me more of array lists, so I like that idea better. Then the push method would have to leave off where the last stack started and check if it is full if it is we don’t add anything if it isn’t we can push onto the stack. Else we need to create a new stack and start pushing and adding on to the new stack. The pop method we again need to check the last stack if it is not null we can possibly add more things into the stack. 
+D: We need to create a class SetOfStacks and we could use an array list or maybe a hash table? Then the push method would have to leave off where the last stack started and check if it is full if it is we don’t add anything if it isn’t we can push onto the stack. Else we need to create a new stack and start pushing and adding on to the new stack. The pop method we again need to check the last stack if it is not null we can possibly add more things into the stack. 
 
 E,A: Step 1: Works some small instances by hand:
         We can have a small stack like {1,4,5,6} and say its full then we need to create another one and push more things onto it, {} now we have two stacks one empty to continue adding to the stack until we need to pop.  
