@@ -1,0 +1,48 @@
+Chapter 2: Problem 2.6 Palindrome: Implement a function to check if a linked list is a palindrome.
+
+I: A palindrome is the same backwards and forwards. So, we are looking at something like mom or bob or 0,1,1,0. We need to check if our linked list is the same backwards as it is forwards.
+D: So, first we need to check if its equal, we also have to reverse the list to check its backwards input and then we check if it is a palindrome or not. Therefore, we will need three methods to achieve this. 
+E,A: Step 1: Works some small instances by hand:
+   (b->o->b) would be a correct linked list, or if we want to use integers we use (0->1->1->0) and if we had (d->o->g) we can see that is not a palindrome. 
+
+      Step 2: write down what you did:
+         We need to start with our two linked list nodes and make sure they are not null and check if the items in the list are not equal, so we can return false right away and if not keep traversing. Then the reverse method will need to simply reverse the list and traverse the other way. Then finally we create our last method and it checks if the list is indeed a palindrome and returns true or false.
+
+   Step 3: Find patterns
+           Of course, we need to make sure the list isn’t null and traverse while the list is not null. We also need to check via boolean methods of course. 
+
+
+   Step 4: Check by hand
+         Attached in a compressed file.
+
+   Step 5: translate it to code
+   Public boolean equal(iNode one,iNode two){
+  While(one!=null && two !=null){
+       If(one.data!=two.data){
+          Return false;
+       }
+       One=one.next;
+       Two=two.next;
+}
+Return both equal to null. 
+}
+Public iNode reverse(iNode s){
+iNode head=null;
+while (s!=null){
+  new iNode n;
+  the new list is equal to head
+   head is equal to new list 
+   node is node next;
+}
+Return head;
+}
+Public boolean palindrome(iNode s){
+New iNode and we pass s;
+Return isEqual and we pass s and the new list;
+}
+
+Step 6: run test cases: 
+     I couldn’t get it to run just right so I ended up doing it in pseudocode. Basically, we still need to get the result of either true for 0->1->1->0 and false for 0->2->0.
+Step 7: Debug failed test case:
+     I need to keep working on methods to get it to work properly, but I got the basis of it working. 
+L: This was a medium level problem I pretty much got the basis it’s just working out the kinks of my methods and I can fill in the pseudocode with real code. 
