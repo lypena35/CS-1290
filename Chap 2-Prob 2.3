@@ -1,0 +1,44 @@
+Chapter 2: Problem 2.3 Delete Middle Node: Implement an algorithm to delete a node in the middle (i.e., any node but the first and last node, not necessarily the exact middle) of a singly linked list, given only access to that node.
+EXAMPLE
+Input: the node c from the linked list a->b->c->d->e->f
+Result: nothing is returned but the new linked list looks like a->b->d->e->f
+
+I: All we have to do is find the middle node in the linked list and we delete it by pointing the previous next to next.next and it will disappear.
+D: We just check to make sure that the list isn’t empty and the node we are deleting isn’t null and if it is we return false because we can’t delete it otherwise we delete it and return true. We do so because it doesn’t ask us to print so we are just simply doing that operation. 
+E,A: Step 1: Works some small instances by hand:
+Well for sure if we had a null list or a list like 1-> then we return false because we have nothing to delete. Now if we had 10->11->6->12->4 then we remove the middle node 6 we would have 10->11->12->4. Or a->b->c->d->e so we would have a->b->d->e. Or for odd number lists the example given to us is a great example. 
+
+      Step 2: write down what you did:
+           We basically do what I stated in D. We check to make sure we don’t have a null list or the next to the middle we are taking out isn’t null and then if it isn’t we use delete the node and return true because we were able to delete it. 
+
+   Step 3: Find patterns
+       We always check to make sure the list is not null. Other than that, I can’t really find other patterns because it’s so straight forward what we need to do.
+
+
+   Step 4: Check by hand
+
+     Attached on zip file 
+         
+   Step 5: translate it to code
+public boolean deleteMidNode(iNode s){//2.3
+            if(s==null||s.next==null){
+                return false;
+            }
+            iNode next=s.next;
+            s.data=next.data;
+            s.next=next.next;
+            return true;
+        }
+    }
+
+Step 6: run test cases: 
+Input: 9->10->4->8 we expect 10 to get deleted so we expect an output of true.
+Output: true
+Input: 1-> expect return false;
+Output: false
+Input: a->b->c->d->e we expect c to get deleted so we get true.
+Output: true
+All tests where successful.
+Step 7: Debug failed test case:
+ I just tested with the edge cases to make sure it was working because I really couldn’t think of much else since this is such a simple problem. 
+L: I have also seen this problem before in different forms deleting the first node or the last one or second to the last etc. Therefore, I didn’t have much problem to create this method. 
