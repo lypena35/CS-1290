@@ -1,0 +1,45 @@
+Chapter 3: Problem 3.2 Stack Min: How would you design a stack which, in addition to push and pop has a function min which returns the minimum element? Push, pop, and min should all operate in 0(1) time.
+
+I: We need to create a method that returns the minimum element and should be 0(1) like push and pop. 
+D: We need a variable to keep track of the minimum element and if we find a smaller value then that element becomes the minimum. We can do so with math.min but we need to pass two integers for it so the best answer is Integer.MAX_VALUE. We can add it in the push method and push the value onto the stack and keep track of the minimum. Then we can have a method to check for the minimum using peek. 
+E,A: Step 1: Works some small instances by hand:
+      We could push (5) and that would be the smallest element and push (6) and 5 would still be smaller than push (3) and 3 would be the smallest. Than we pop, and we get 3 and the new minimum is 5 and we pop 6 and 5 is still minimum. 
+
+      Step 2: write down what you did:
+            We create a method for min and we check if the stack is empty and if it isn’t we return Integer.MAX_VALUE. Else we would peek. Then we could modify the push to make sure we keep track of it there and we can use the method we just created to do that. As well as, add it as a variable to the stack. 
+
+   Step 3: Find patterns
+         We always have to check if the stack is empty so that we don’t get an exception. We have to make sure we keep track of the minimum at all levels because if we only do it in one method and we need to peek or push we can’t tell what the minimum is or if it still is the minimum. 
+
+   Step 4: Check by hand
+         On the attached zip file.
+
+   Step 5: translate it to code
+ Class stack{
+Public int min;
+Public Node first;
+Public int size;
+Public int item;
+
+Public stack(int s ,int min){
+    Item=s;
+  This.min=min;
+}
+Public int min(){
+If(stack.isEmpty()){
+   Return Integer.MAX_VALUE;
+}else{
+Return peek().min;
+}
+}
+}
+Public void push(int item){
+Int Nmin=Math.min(item,min());
+Stack.push(new stack(item,Nmin);
+}
+Step 6: run test cases: 
+    This is kind of a hard thing to manage being stacks can be anything in the sense that what is in the class can differ, so I used pseudocode when need be. 
+But essentially what should happen would be pushing and popping integers in the stack and out of the stack and we would get the minimum number that is accurate because we keep track of it all the time. 
+Step 7: Debug failed test case: 
+     This is a little hard again because we don’t exactly know if we have a preset stack object or we need to create our own etc. So, I am going off of pseudocode for that reason.
+L: I don’t get to work with stacks much, but I like working with them. I like how we can create our own specific stack for what we need it for, this question is a great example of this. 
