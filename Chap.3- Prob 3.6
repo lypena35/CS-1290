@@ -1,0 +1,60 @@
+Chapter 3: Problem 3.6 Animal Shelter: An animal shelter, which holds only dogs and cats, operates on strictly “first in, first out” basis. People must adopt either the “oldest” (based on arrival time) of all animals at the shelter, or they can select whether they would prefer a dog or a cat(and will receive the oldest animal of that type). They cannot select which specific animal they would like. Create the data structures to maintain this system and implement operations such as enqueue, dequeueAny, dequeueDog, and dequequeCat. You may use the built-in LinkedList data structure, 
+
+I: This question is asking us to create a queue that works similar to a stack and people can only adopt the oldest animal in the shelter they can basically only pick if they want a dog or a cat. So, we have to have system that maintains the system in which this is going to happen. 
+D: I am guessing by the names we are suggested we use a queue in a stack ideology and we use a linked list to build and store these animals, which I am sure will be objects, so we can get the necessary information we need. One for the dog and one for the cat. And then we keep track of when we dequeue and enqueue. Also, the name and the age of the dog or cat that are being enqueued. 
+E,A: Step 1: Works some small instances by hand:
+      We have two dogs Spot and Rufus and Rufus has been with us longer so whomever comes to get a dog will get Rufus and then the second person who comes in will get Spot. As for cats we have Millie and Dart and Dart has been with us longer so whomever comes to get a cat will get Dart and then Millie. If we get in another dog before someone adopts Spot, then Spot becomes the oldest and the new dog will have to wait till someone comes and adopts Spot. 
+
+      Step 2: write down what you did:
+        For sure we have to create an animal object, so we can store the name of the animals and what order they are in. Then we need to check if they are older we dequeue them and peek if need be. Of course, with objects we need setters and getters of the order of the animals, and create the linked list. Then dequeue the dog or cat. 
+       
+
+   Step 3: Find patterns
+        There isn’t much pattern outside of building an object which we have done several times so that wasn’t to different. I have never used an object with a queue or a stack or a linked list so that will be new to me. 
+
+   Step 4: Check by hand
+         
+Pictures attached on the zip file. 
+   Step 5: translate it to code
+public class Animals{//we need to create an object that keeps track 
+int orderOfAnimals;
+public String nameOfAnimal;
+public void setOrderOfAnimals(int n){ orderOfAnimals=n;}
+public int getOrderOfAnimals(){return orderOfAnimals}
+public Animals(String ani){nameOfAnimal=ani}
+
+public boolean OlderAni(Animals ani){
+return this.OrderOfAnimals<ani.getOrderOfAnimals;
+}
+}
+Public class QueueAni{
+Linked list dogs = new Linked list;
+Linked list cats=new Linked list;
+int orderOfAni=0;
+
+public void enqueue( Animal ani){
+ani.setOrderOfAnimals(orderOfAni);
+orderOfAni++;
+
+//if the cat or dog was the last to get added we want to keep track of that. 
+if(cat) is added last we pass the cat and its order;
+if(dog) is added last we pass the dog and its order;
+}
+Public Animals dequeueAny(){
+If(dogs equals 0){
+We check which dog is the oldest by peeking;
+Else if(cats equals 0){
+We check which cat is the oldest by peeking;
+}
+If(the dog is older than the other dog or cat)
+return dequeuedogs();
+else{
+return dequeuecats();
+}
+}
+
+Step 6: run test cases: 
+Since I had to do this with some pseudocode I didn’t get to run it. This one was pretty hard but hopefully it will return the oldest dog or cat and takes them out if they are being adopted. 
+Step 7: Debug failed test case:
+I am sure I missed some other things, but I also think I should have added a method to say if the dog or cat was getting adopted as a boolean if they are then we dequeue and if not, we know they are just checking to see which dog or cat is the last. 
+L: This problem I think can be more efficient using other data structures then queues or stacks, but we didn’t have that option. I like the fact that this problem is simplified but I also have a lot of questions about this problem. It is interesting for sure. 
